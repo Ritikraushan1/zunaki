@@ -5,26 +5,34 @@ interface ButtonProps {
   onClick?: () => void;
   href?: string;
   className?: string;
+  variant?: "light" | "dark";
 }
 
-export default function Button({ children, onClick, href, className = "" }: ButtonProps) {
-  const baseStyles = "px-6 py-4 cursor-pointer rounded-[20px] text-white text-md font-bold tracking-[0.15em] hover:bg-white/10 transition-all duration-300 inline-block uppercase";
+export default function Button({ children, onClick, href, className = "", variant = "light" }: ButtonProps) {
+  const baseStyles = "px-12 py-4 cursor-pointer rounded-full text-base font-bold tracking-[0.15em] transition-all duration-300 inline-block uppercase";
   
-  const borderStyle = {
+  const variantStyles = variant === "dark" 
+    ? "text-black hover:bg-neutral-200"
+    : "text-white hover:bg-white/10";
+  
+  const borderStyle = variant === "light" ? {
     border: '1px solid #FFFFFF',
     borderBottom: '5px solid #FFFFFF'
+  } : {
+    border: '1px solid #0a0a1a',
+    borderBottom: '5px solid #0a0a1a'
   };
   
   if (href) {
     return (
-      <a href={href} className={`${baseStyles} ${className}`} style={borderStyle}>
+      <a href={href} className={`${baseStyles} ${variantStyles} ${className}`} style={borderStyle}>
         {children}
       </a>
     );
   }
   
   return (
-    <button onClick={onClick} className={`${baseStyles} ${className}`} style={borderStyle}>
+    <button onClick={onClick} className={`${baseStyles} ${variantStyles} ${className}`} style={borderStyle}>
       {children}
     </button>
   );
