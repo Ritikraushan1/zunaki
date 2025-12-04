@@ -5,6 +5,9 @@ import ServicesSection from "./components/ServicesSection";
 import CommitmentsSection from "./components/CommitmentsSection";
 import ProductsSection from "./components/ProductsSection";
 import ProjectsSection from "./components/ProjectsSection";
+import TestimonialsSection from "./components/TestimonialsSection";
+import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -20,6 +23,9 @@ export default function Home() {
       <CommitmentsSection />
       <ProductsSection />
       <ProjectsSection />
+      <TestimonialsSection />
+      <ContactSection />
+      <Footer />
     </>
   );
 }
